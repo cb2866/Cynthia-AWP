@@ -7,10 +7,11 @@ import {
   Text,
   View,
   Platform,
+  TouchableOpacity,
 } from "react-native";
 // import { NavigationContainer } from "@react-navigation/native";
 
-function Home({ navigation }) {
+function InitialScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.text}>Welcome to the Love Island Fan Community</Text> */}
@@ -20,22 +21,22 @@ function Home({ navigation }) {
           url: "https://stylecaster.com/wp-content/uploads/2021/08/Love-Island-UK-2.png?w=445",
         }}
       >
-        <Button
-          // style={styles.buttonText}
-          color="white"
-          title="Go to Discussion Board"
+        <TouchableOpacity
+          style={styles.roundButton2}
           onPress={() => {
-            navigation.navigate("Discussion Board");
+            navigation.navigate("LogIn");
           }}
-        />
-        <Button
-          // style={styles.buttonText}
-          color="white"
-          title="Sign-up for full access"
+        >
+          <Text style={styles.buttonText}>Log In</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.roundButton2}
           onPress={() => {
             navigation.navigate("SignUp");
           }}
-        />
+        >
+          <Text style={styles.buttonText}>Sign-Up</Text>
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );
@@ -45,6 +46,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     flex: 1,
+  },
+  roundButton2: {
+    marginTop: 20,
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: "#56D8E5",
   },
   image: {
     flex: 1,
@@ -64,11 +75,12 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: "bold",
     textAlignmentVertical: "bottom",
-    backgroundColor: "#F9E9B9",
+    // backgroundColor: "#F9E9B9",
   },
   buttonText: {
     fontSize: 20,
-    color: "#FF36A0",
+    fontWeight: "bold",
+    color: "white",
   },
   thumbnail: {
     width: 300,
@@ -77,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default InitialScreen;

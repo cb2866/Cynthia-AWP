@@ -3,20 +3,18 @@ import {
   Button,
   Image,
   StyleSheet,
-  TextInput,
   Text,
+  TextInput,
   View,
   Platform,
 } from "react-native";
 // import { NavigationContainer } from "@react-navigation/native";
 
-function SignUp({ navigation }) {
+function LogIn({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.formLabel}>Join the Love Island Community!</Text>
+      <Text style={styles.formLabel}>Login</Text>
       <View>
-        <TextInput placeholder="First Name" style={styles.inputStyle} />
-        <TextInput placeholder="Last Name" style={styles.inputStyle} />
         <TextInput placeholder="Email" style={styles.inputStyle} />
         <TextInput
           secureTextEntry={true}
@@ -68,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUp;
+export default LogIn;

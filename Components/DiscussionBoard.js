@@ -6,14 +6,26 @@ function DiscussionBoard({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>All Things Love Island Discussion Board!</Text>
-      <Button
+      {/* <Button
         title="Home"
         onPress={() => {
           navigation.navigate("Home");
         }}
-      />
+      /> */}
     </View>
   );
 }
 
 export default DiscussionBoard;
+
+// button for Discussion Board Link
+{
+  /* <Button
+          // style={styles.buttonText}
+          color="#f194ff"
+          title="Go to Discussion Board"
+          onPress={() => {
+            navigation.navigate("Discussion Board");
+          }}
+        /> */
+}

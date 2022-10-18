@@ -14,9 +14,11 @@ import * as ImageManipulator from "expo-image-manipulator";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "./Home";
+import InitialScreen from "./InitialScreen";
 import DiscussionBoard from "./DiscussionBoard";
 import SignUp from "./SignUp";
+import LogIn from "./LogIn";
+import HomeScreen from "./HomeScreen";
 
 const Stack = createNativeStackNavigator();
 // export default function App() {
@@ -74,8 +76,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="Welcome!"
+          component={InitialScreen}
           options={{
             headerStyle: {
               backgroundColor: "#56D8E5",
@@ -103,6 +105,32 @@ export default function App() {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
+          options={{
+            headerStyle: {
+              backgroundColor: "#56D8E5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="LogIn"
+          component={LogIn}
+          options={{
+            headerStyle: {
+              backgroundColor: "#56D8E5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
           options={{
             headerStyle: {
               backgroundColor: "#56D8E5",
