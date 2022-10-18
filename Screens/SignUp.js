@@ -8,7 +8,7 @@ import {
   View,
   Platform,
 } from "react-native";
-// import { NavigationContainer } from "@react-navigation/native";
+
 
 function SignUp({ navigation }) {
   return (

@@ -8,17 +8,15 @@ import {
   Platform,
   Button,
 } from "react-native";
-import * as ImagePicker from "expo-image-picker";
-import * as Sharing from "expo-sharing";
-import * as ImageManipulator from "expo-image-manipulator";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import InitialScreen from "./InitialScreen";
-import DiscussionBoard from "./DiscussionBoard";
-import SignUp from "./SignUp";
-import LogIn from "./LogIn";
-import HomeScreen from "./HomeScreen";
+import InitialScreen from "../Screens/InitialScreen";
+import DiscussionBoard from "../Screens/DiscussionBoard";
+import SignUp from "../Screens/SignUp";
+import LogIn from "../Screens/LogIn";
+import HomeScreen from "../Screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 // export default function App() {
@@ -71,7 +69,7 @@ const Stack = createNativeStackNavigator();
 //   );
 // }
 
-export default function App() {
+export default function AuthStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -128,7 +126,7 @@ export default function App() {
             },
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
@@ -140,7 +138,7 @@ export default function App() {
               fontWeight: "bold",
             },
           }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
