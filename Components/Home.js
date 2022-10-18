@@ -8,7 +8,7 @@ import {
   View,
   Platform,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+// import { NavigationContainer } from "@react-navigation/native";
 
 function Home({ navigation }) {
   return (
@@ -16,20 +16,21 @@ function Home({ navigation }) {
       {/* <Text style={styles.text}>Welcome to the Love Island Fan Community</Text> */}
       <ImageBackground
         style={styles.image}
-        resizeMode="stretch"
         source={{
-          url: "https://m.media-amazon.com/images/M/MV5BZWE2ZDZmNzUtMmMyMS00YTBmLTk4NTktMGQ5OTc5YWJmNDU2XkEyXkFqcGdeQXVyMTA1NzU3MTM1._V1_.jpg",
+          url: "https://stylecaster.com/wp-content/uploads/2021/08/Love-Island-UK-2.png?w=445",
         }}
       >
         <Button
-          // style={styles.text}
+          // style={styles.buttonText}
+          color="white"
           title="Go to Discussion Board"
           onPress={() => {
             navigation.navigate("Discussion Board");
           }}
         />
         <Button
-          // style={styles.text}
+          // style={styles.buttonText}
+          color="white"
           title="Sign-up for full access"
           onPress={() => {
             navigation.navigate("SignUp");
@@ -42,17 +43,20 @@ function Home({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "column",
     flex: 1,
   },
   image: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     opacity: 0.5,
   },
   button: {
     backgroundColor: "blue",
     padding: 20,
-    borderRadius: 5,
+    alignSelf: "flex-end",
+    position: "absolute",
+    bottom: 35,
   },
   text: {
     color: "white",
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    color: "#fff",
+    color: "#FF36A0",
   },
   thumbnail: {
     width: 300,
