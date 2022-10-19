@@ -17,57 +17,9 @@ import DiscussionBoard from "../Screens/DiscussionBoard";
 import SignUp from "../Screens/SignUp";
 import SignIn from "../Screens/SignIn";
 import HomeScreen from "../Screens/HomeScreen";
-
+import SignOut from "../Screens/SignOut";
+import S2 from "../Screens/S2";
 const Stack = createNativeStackNavigator();
-// export default function App() {
-//   const [selectedImage, setSelectedImage] = React.useState(null);
-//   let openImagePickerAsync = async () => {
-//     let pickerResult = await ImagePicker.launchImageLibraryAsync();
-//     if (pickerResult.cancelled === true) {
-//       return;
-//     }
-//     setSelectedImage({ localUri: pickerResult.uri });
-//   };
-//   let openShareDialogAsync = async () => {
-//     if (Platform.OS === "web") {
-//       alert(`Uh oh, sharing isn't available on your platform`);
-//       return;
-//     }
-//     const imageTmp = await ImageManipulator.manipulateAsync(
-//       selectedImage.localUri
-//     );
-//     await Sharing.shareAsync(imageTmp.uri);
-//   };
-//   if (selectedImage !== null) {
-//     return (
-//       <View style={styles.container}>
-//         <Image
-//           source={{ uri: selectedImage.localUri }}
-//           style={styles.thumbnail}
-//         />
-//         <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
-//           <Text style={styles.buttonText}>Share this photo</Text>
-//         </TouchableOpacity>
-//       </View>
-//     );
-//   }
-
-//   return (
-//     <View style={styles.container}>
-//       <Image
-//         source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
-//         style={styles.logo}
-//       />
-//       <Text style={styles.instructions}>
-//         To share a photo from your phone with a friend, just press the button
-//         below!
-//       </Text>
-//       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-//         <Text style={styles.buttonText}>Pick a photo</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// }
 
 export default function AuthStack() {
   return (
@@ -76,6 +28,32 @@ export default function AuthStack() {
         <Stack.Screen
           name="Welcome!"
           component={InitialScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: "#56D8E5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Sign Out"
+          component={SignOut}
+          options={{
+            headerStyle: {
+              backgroundColor: "#56D8E5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Season 2"
+          component={S2}
           options={{
             headerStyle: {
               backgroundColor: "#56D8E5",

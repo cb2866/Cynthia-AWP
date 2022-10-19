@@ -1,19 +1,15 @@
 import React from "react";
 import {
   Button,
-  Image,
   ImageBackground,
   StyleSheet,
   Text,
   View,
-  Platform,
   TouchableOpacity,
 } from "react-native";
-import { useAuthentication } from "../utils/hooks/useAuthentication";
 import { getAuth, signOut } from "firebase/auth";
 
 function HomeScreen({ navigation }) {
-  // const { user } = useAuthentication();
   const auth = getAuth();
 
   return (
@@ -24,7 +20,7 @@ function HomeScreen({ navigation }) {
           url: "https://i.pinimg.com/originals/f2/32/84/f232848dd82aa1811a32ce487bced701.jpg",
         }}
       >
-        <Text style={styles.text}>Welcome</Text>
+        <Text style={styles.text}>Crack On!</Text>
         <TouchableOpacity
           style={styles.flatButton}
           onPress={() => {
@@ -36,7 +32,7 @@ function HomeScreen({ navigation }) {
         <TouchableOpacity
           style={styles.flatButton}
           onPress={() => {
-            navigation.navigate("SignUp");
+            navigation.navigate("Season 2");
           }}
         >
           <Text style={styles.buttonText}>Season 2</Text>
@@ -89,20 +85,18 @@ function HomeScreen({ navigation }) {
         >
           <Text style={styles.buttonText}>Season 8</Text>
         </TouchableOpacity>
-        <Button
-          title="Sign Out"
-          style={styles.button}
+        <TouchableOpacity
+          style={styles.flatRedButton}
           onPress={() =>
             signOut(auth)
               .then(() => {
-                // Sign-out successful.
-                console.log("Sign out successful");
+                navigation.navigate("Sign Out");
               })
-              .catch((error) => {
-                // An error happened.
-              })
+              .catch((error) => {})
           }
-        />
+        >
+          <Text style={styles.signOutButton}>Sign Out</Text>
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );
@@ -123,12 +117,26 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#ff36a0",
   },
+  flatRedButton: {
+    marginTop: 20,
+    width: 100,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 20,
+    backgroundColor: "#c40610",
+  },
   image: {
     flex: 1,
     justifyContent: "flex-start",
     padding: 15,
     opacity: 0.5,
     resizeMode: "contain",
+  },
+  control: {
+    marginTop: 10,
+    backgroundColor: "#56d8e5",
   },
   text: {
     color: "white",
@@ -137,6 +145,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   buttonText: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
+  },
+  signOutButton: {
     fontSize: 15,
     fontWeight: "bold",
     color: "white",

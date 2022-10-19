@@ -18,7 +18,7 @@ function DiscussionBoard({ navigation }) {
 
 export default DiscussionBoard;
 
-// button for Discussion Board Link
+
 {
   /* <Button
           // style={styles.buttonText}

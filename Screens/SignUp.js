@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import TextBox from "react-native-password-eye";
 import {
   Image,
   StyleSheet,
@@ -8,38 +9,10 @@ import {
   Platform,
 } from "react-native";
 import { Button } from "@rneui/base";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-ionicons";
 import { auth, createUserWithEmailAndPassword } from "firebase/auth";
 import { handleSignUp } from "../config/firebase";
 
-// const auth = getAuth();
-
-// function SignUp({ navigation }) {
-// const [value, setValue] = React.useState({
-//   email: "",
-//   password: "",
-//   error: "",
-// });
-
-// async function signUp() {
-//   if (value.email === "" || value.password === "") {
-//     setValue({
-//       ...value,
-//       error: "Email and password are mandatory.",
-//     });
-//     return;
-//   }
-
-//   try {
-//     await createUserWithEmailAndPassword(auth, value.email, value.password);
-//     navigation.navigate("Sign In");
-//   } catch (error) {
-//     setValue({
-//       ...value,
-//       error: error.message,
-//     });
-//   }
-// }
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -101,7 +74,11 @@ const SignUp = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.formLabel}>Join the Love Island Community!</Text>
+      <View>
+        <Text style={styles.formLabel}>
+          Ready to join the Love Island Villa?
+        </Text>
+      </View>
       <View>
         <TextInput
           placeholder="Email"
@@ -112,32 +89,27 @@ const SignUp = ({ navigation }) => {
           keyboardType="email-address"
           returnKeyType="next"
         />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          style={styles.inputStyle}
-          onChangeText={handlePasswordChange}
-          returnKeyType="next"
-          secureTextEntry={secureTextEntry()}
-          textContentType="password"
-          keyboardType="default"
-          autoCorrect={false}
-        />
-        {/* <TextInput
-          placeholder="Email"
-          style={styles.inputStyle}
-          leftIcon={<Icon name="envelope" size={16} />}
-          value={value.email}
-          onChangeText={(text) => setValue({ ...value, email: text })}
-        /> */}
-        {/* <TextInput
-          secureTextEntry={true}
-          placeholder="Password"
-          value={value.password}
-          style={styles.inputStyle}
-          onChangeText={(text) => setValue({ ...value, password: text })}
-          leftIcon={<Icon name="key" size={16} />}
-        /> */}
+        <View style={styles.passwordContainer}>
+          <TextInput
+            placeholder="Password"
+            value={password}
+            style={styles.inputStyle}
+            onChangeText={handlePasswordChange}
+            returnKeyType="next"
+            secureTextEntry={secureTextEntry()}
+            textContentType="password"
+            keyboardType="default"
+            autoCorrect={false}
+          />
+          <Icon
+            name={visible.name}
+            size={24}
+            color="#ff36A0"
+            style={styles.eyeContainer}
+            onPress={ToggleVisibilty}
+          />
+        </View>
+
         <Button
           title="Submit"
           buttonStyle={styles.control}
@@ -157,10 +129,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 50,
   },
-
   formLabel: {
-    fontSize: 20,
+    fontSize: 25,
     color: "#fff",
+    fontWeight: "bold",
+  },
+  passwordContainer: {
+    flexDirection: "row",
+    width: "100%",
+    height: 60,
+    backgroundColor: "#0ff1",
+    borderRadius: 5,
+    marginBottom: 35,
+  },
+  eyeContainer: {
+    position: "absolute",
+    right: 10,
+    top: 25,
   },
   inputStyle: {
     marginTop: 20,
@@ -169,6 +154,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 50,
     backgroundColor: "#DCDCDC",
+    alignContent: "center",
   },
   formText: {
     alignItems: "center",
@@ -179,9 +165,11 @@ const styles = StyleSheet.create({
   text: {
     color: "#fff",
     fontSize: 20,
+    fontWeight: "bold",
   },
   control: {
     marginTop: 10,
+    backgroundColor: "#56d8e5",
   },
   controls: {
     flex: 1,

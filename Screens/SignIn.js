@@ -7,40 +7,10 @@ import {
   View,
   Platform,
 } from "react-native";
-import { Input, Button } from "@rneui/base";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { firebaseApp } from "@firebase/app";
-import { auth, signInWithEmailAndPassword } from "firebase/auth";
+import { Button } from "@rneui/base";
+import Icon from "react-native-ionicons";
+
 import { handleSignIn } from "../config/firebase";
-
-// import { NavigationContainer } from "@react-navigation/native";
-
-// function SignIn({ navigation }) {
-//   const [value, setValue] = React.useState({
-//     email: "",
-//     password: "",
-//     error: "",
-//   });
-
-//   async function signIn() {
-//     if (value.email === "" || value.password === "") {
-//       setValue({
-//         ...value,
-//         error: "Email and password are mandatory.",
-//       });
-//       return;
-//     }
-
-//     try {
-//       await signInWithEmailAndPassword(value.email, value.password);
-//       // navigation.navigate("Sign In");
-//     } catch (error) {
-//       setValue({
-//         ...value,
-//         error: error.message,
-//       });
-//     }
-//   }
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -86,13 +56,9 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.formLabel}>Sign In</Text>
-      {/* {!!value.error && (
-        <View style={styles.error}>
-          <Text>{value.error}</Text>
-        </View>
-      )} */}
-
+      <View>
+        <Text style={styles.formLabel}>Welcome back, bombshell!</Text>
+      </View>
       <View>
         <TextInput
           placeholder="Email"
@@ -102,34 +68,28 @@ const SignIn = ({ navigation }) => {
           textContentType="emailAddress"
           returnKeyType="next"
         />
-        <TextInput
-          secureTextEntry={secureTextEntry()}
-          containerStyle={styles.control}
-          value={password}
-          placeholder="Password"
-          style={styles.inputStyle}
-          onChangeText={handlePasswordChange}
-          returnKeyType="go"
-          textContentType="password"
-          keyboardType="default"
-          autoCorrect={false}
-        />
-        {/* <TextInput
-          placeholder="Email"
-          style={styles.inputStyle}
-          value={value.email}
-          onChangeText={(text) => setValue({ ...value, email: text })}
-          leftIcon={<Icon name="envelope" size={16}></Icon>}
-        />
-        <TextInput
-          secureTextEntry={true}
-          containerStyle={styles.control}
-          value={value.password}
-          placeholder="Password"
-          onChangeText={(text) => setValue({ ...value, password: text })}
-          style={styles.inputStyle}
-          leftIcon={<Icon name="key" size={16} />}
-        /> */}
+        <View style={styles.passwordContainer}>
+          <TextInput
+            secureTextEntry={secureTextEntry()}
+            containerStyle={styles.control}
+            value={password}
+            placeholder="Password"
+            style={styles.inputStyle}
+            onChangeText={handlePasswordChange}
+            returnKeyType="go"
+            textContentType="password"
+            keyboardType="default"
+            autoCorrect={false}
+          />
+          <Icon
+            name={visible.name}
+            size={24}
+            color="#ff36A0"
+            style={styles.eyeContainer}
+            onPress={ToggleVisibilty}
+          />
+        </View>
+
         <Button
           title="Sign In"
           buttonStyle={styles.control}
@@ -149,15 +109,37 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 50,
   },
+  passwordContainer: {
+    flexDirection: "row",
+    width: "100%",
+    height: 60,
+    backgroundColor: "#0ff1",
+    borderRadius: 5,
+    marginBottom: 35,
+  },
+  eyeContainer: {
+    position: "absolute",
+    right: 10,
+    top: 25,
+  },
   controls: {
     flex: 1,
   },
+  form: {
+    width: "80%",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    top: -40,
+  },
   control: {
     marginTop: 10,
+    backgroundColor: "#56d8e5",
   },
   formLabel: {
-    fontSize: 20,
+    fontSize: 25,
     color: "#fff",
+    fontWeight: "bold",
   },
   inputStyle: {
     marginTop: 20,
