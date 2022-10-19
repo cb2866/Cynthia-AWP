@@ -8,31 +8,56 @@ import {
   View,
   Platform,
 } from "react-native";
+import { auth, createUserWithEmailAndPassword } from "firebase/auth";
 
+// const auth = getAuth();
 
-function SignUp({ navigation }) {
+const SignUp = ({ navigation }) => {
+  const [value, setValue] = React.useState({
+    email: "",
+    password: "",
+    error: "",
+  });
+
+  function signUp() {
+    if (value.email === "" || value.password === "") {
+      setValue({
+        ...value,
+        error: "Email and password are mandatory.",
+      });
+      return;
+    }
+
+    setValue({
+      ...value,
+      error: "",
+    });
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.formLabel}>Join the Love Island Community!</Text>
       <View>
-        <TextInput placeholder="First Name" style={styles.inputStyle} />
-        <TextInput placeholder="Last Name" style={styles.inputStyle} />
-        <TextInput placeholder="Email" style={styles.inputStyle} />
+        {/* <TextInput placeholder="First Name" style={styles.inputStyle} />
+        <TextInput placeholder="Last Name" style={styles.inputStyle} /> */}
+        <TextInput
+          placeholder="Email"
+          style={styles.inputStyle}
+          value={value.email}
+          onChangeText={(text) => setValue({ ...value, email: text })}
+        />
         <TextInput
           secureTextEntry={true}
           placeholder="Password"
+          value={value.password}
           style={styles.inputStyle}
+          onChangeText={(text) => setValue({ ...value, password: text })}
         />
       </View>
-      <Button
-        title="Submit"
-        onPress={() => {
-          navigation.navigate("HomeScreen");
-        }}
-      />
+      <Button title="Submit" onPress={signUp} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

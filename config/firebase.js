@@ -2,7 +2,11 @@
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import "firebase/auth";
 import Constants from "expo-constants";
+import firebase from "@react-native-firebase/app";
+import "@react-native-firebase/auth";
+import "@react-native-firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,10 +22,9 @@ const firebaseConfig = {
   appId: Constants.manifest?.extra?.firebaseAppId,
   measurementId: Constants.manifest?.extra?.firebaseMeasurementId,
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// Initialize Firebase
+
 const analytics = getAnalytics(app);
-
-
+const auth = getAuth(app);
 export default app;
