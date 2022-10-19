@@ -24,10 +24,10 @@ function InitialScreen({ navigation }) {
         <TouchableOpacity
           style={styles.roundButton2}
           onPress={() => {
-            navigation.navigate("LogIn");
+            navigation.navigate("SignIn");
           }}
         >
-          <Text style={styles.buttonText}>Log In</Text>
+          <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.roundButton2}
@@ -35,7 +35,7 @@ function InitialScreen({ navigation }) {
             navigation.navigate("SignUp");
           }}
         >
-          <Text style={styles.buttonText}>Sign-Up</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </ImageBackground>
     </View>

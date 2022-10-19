@@ -9,8 +9,10 @@ import {
   Platform,
   TouchableOpacity,
 } from "react-native";
+import { useAuthentication } from "../utils/hooks/useAuthentication";
 
 function HomeScreen({ navigation }) {
+  const { user } = useAuthentication();
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -19,9 +21,7 @@ function HomeScreen({ navigation }) {
           url: "https://i.pinimg.com/originals/f2/32/84/f232848dd82aa1811a32ce487bced701.jpg",
         }}
       >
-        <Text style={styles.text}>
-          Welcome to the Love Island Fan Community!
-        </Text>
+        <Text style={styles.text}>Welcome {user?.email}!</Text>
         <TouchableOpacity
           style={styles.flatButton}
           onPress={() => {
@@ -86,6 +86,11 @@ function HomeScreen({ navigation }) {
         >
           <Text style={styles.buttonText}>Season 8</Text>
         </TouchableOpacity>
+        <Button
+          title="Sign Out"
+          style={styles.button}
+          onPress={() => signOut(auth)}
+        />
       </ImageBackground>
     </View>
   );

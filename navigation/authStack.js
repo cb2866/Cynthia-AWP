@@ -15,7 +15,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import InitialScreen from "../Screens/InitialScreen";
 import DiscussionBoard from "../Screens/DiscussionBoard";
 import SignUp from "../Screens/SignUp";
-import LogIn from "../Screens/LogIn";
+import SignIn from "../Screens/SignIn";
 import HomeScreen from "../Screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
@@ -114,8 +114,8 @@ export default function AuthStack() {
           }}
         />
         <Stack.Screen
-          name="LogIn"
-          component={LogIn}
+          name="SignIn"
+          component={SignIn}
           options={{
             headerStyle: {
               backgroundColor: "#56D8E5",

@@ -2,25 +2,25 @@ import React from "react";
 import {
   Image,
   StyleSheet,
-  TextInput,
   Text,
+  TextInput,
   View,
   Platform,
 } from "react-native";
 import { Input, Button } from "@rneui/base";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { auth, createUserWithEmailAndPassword } from "firebase/auth";
+import { firebaseApp } from "@firebase/app";
+import { auth, signInWithEmailAndPassword } from "firebase/auth";
+// import { NavigationContainer } from "@react-navigation/native";
 
-// const auth = getAuth();
-
-function SignUp({ navigation }) {
+function SignIn({ navigation }) {
   const [value, setValue] = React.useState({
     email: "",
     password: "",
     error: "",
   });
 
-  async function signUp() {
+  async function signIn() {
     if (value.email === "" || value.password === "") {
       setValue({
         ...value,
@@ -30,8 +30,8 @@ function SignUp({ navigation }) {
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, value.email, value.password);
-      navigation.navigate("Sign In");
+      await signInWithEmailAndPassword(value.email, value.password);
+      // navigation.navigate("Sign In");
     } catch (error) {
       setValue({
         ...value,
@@ -39,10 +39,9 @@ function SignUp({ navigation }) {
       });
     }
   }
-
   return (
     <View style={styles.container}>
-      <Text style={styles.formLabel}>Join the Love Island Community!</Text>
+      <Text style={styles.formLabel}>Sign In</Text>
       {!!value.error && (
         <View style={styles.error}>
           <Text>{value.error}</Text>
@@ -53,19 +52,20 @@ function SignUp({ navigation }) {
         <TextInput
           placeholder="Email"
           style={styles.inputStyle}
-          leftIcon={<Icon name="envelope" size={16} />}
           value={value.email}
           onChangeText={(text) => setValue({ ...value, email: text })}
+          leftIcon={<Icon name="envelope" size={16}></Icon>}
         />
         <TextInput
           secureTextEntry={true}
-          placeholder="Password"
+          containerStyle={styles.control}
           value={value.password}
-          style={styles.inputStyle}
+          placeholder="Password"
           onChangeText={(text) => setValue({ ...value, password: text })}
+          style={styles.inputStyle}
           leftIcon={<Icon name="key" size={16} />}
         />
-        <Button title="Submit" buttonStyle={styles.control} onPress={signUp} />
+        <Button title="Sign In" buttonStyle={styles.control} onPress={signIn} />
       </View>
     </View>
   );
@@ -80,7 +80,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 50,
   },
-
+  controls: {
+    flex: 1,
+  },
+  control: {
+    marginTop: 10,
+  },
   formLabel: {
     fontSize: 20,
     color: "#fff",
@@ -103,12 +108,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 20,
   },
-  control: {
-    marginTop: 10,
-  },
-  controls: {
-    flex: 1,
-  },
 });
 
-export default SignUp;
+export default SignIn;
