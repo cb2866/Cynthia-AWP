@@ -42,7 +42,7 @@ import { handleSignIn } from "../config/firebase";
 //     }
 //   }
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisibility] = React.useState({ name: "eye-off" });
@@ -77,6 +77,7 @@ const SignIn = () => {
     } else {
       try {
         await handleSignIn(email, password);
+        navigation.navigate("Home");
       } catch (error) {
         console.error(error);
       }

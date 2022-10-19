@@ -1,13 +1,15 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import {
-  getAuth,
+  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import "firebase/compat/firestore";
 import { initializeApp } from "firebase/app";
 import Constants from "expo-constants";
+import { initializeAuth, browserSessionPersistence } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: Constants.manifest?.extra?.firebaseApiKey,
@@ -19,7 +21,10 @@ const firebaseConfig = {
   measurementId: Constants.manifest?.extra?.firebaseMeasurementId,
 };
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = initializeAuth(app, {
+  persistence: browserSessionPersistence,
+  popupRedirectResolver: undefined,
+});
 
 export const handleSignUp = async (email, password) => {
   await createUserWithEmailAndPassword(auth, email, password)
@@ -33,7 +38,7 @@ export const handleSignUp = async (email, password) => {
 };
 
 export const handleSignIn = async (email, password) => {
-  await signInWithEmailAndPassword(email, password)
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential.currentUser);
       const user = userCredential.user;
@@ -44,5 +49,6 @@ export const handleSignIn = async (email, password) => {
       const errorMessage = error.message;
     });
 };
+
 
 export default app;

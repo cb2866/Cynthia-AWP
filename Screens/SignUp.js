@@ -40,7 +40,7 @@ import { handleSignUp } from "../config/firebase";
 //     });
 //   }
 // }
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -92,6 +92,7 @@ const SignUp = () => {
     } else {
       try {
         await handleSignUp(email, password);
+        navigation.navigate("SignIn");
       } catch (error) {
         console.error(error);
       }
@@ -101,12 +102,6 @@ const SignUp = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.formLabel}>Join the Love Island Community!</Text>
-      {/* {!!value.error && (
-        <View style={styles.error}>
-          <Text>{value.error}</Text>
-        </View>
-      )} */}
-
       <View>
         <TextInput
           placeholder="Email"

@@ -10,9 +10,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useAuthentication } from "../utils/hooks/useAuthentication";
+import { getAuth, signOut } from "firebase/auth";
 
 function HomeScreen({ navigation }) {
   // const { user } = useAuthentication();
+  const auth = getAuth();
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -21,9 +24,7 @@ function HomeScreen({ navigation }) {
           url: "https://i.pinimg.com/originals/f2/32/84/f232848dd82aa1811a32ce487bced701.jpg",
         }}
       >
-        <Text style={styles.text}>
-          Welcome, {firebase.auth().currentUser.email}!
-        </Text>
+        <Text style={styles.text}>Welcome</Text>
         <TouchableOpacity
           style={styles.flatButton}
           onPress={() => {
@@ -91,7 +92,16 @@ function HomeScreen({ navigation }) {
         <Button
           title="Sign Out"
           style={styles.button}
-          onPress={() => signOut(auth)}
+          onPress={() =>
+            signOut(auth)
+              .then(() => {
+                // Sign-out successful.
+                console.log("Sign out successful");
+              })
+              .catch((error) => {
+                // An error happened.
+              })
+          }
         />
       </ImageBackground>
     </View>

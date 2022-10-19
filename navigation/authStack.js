@@ -87,6 +87,19 @@ export default function AuthStack() {
           }}
         />
         <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: "#56D8E5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
           name="Discussion Board"
           component={DiscussionBoard}
           options={{
@@ -126,19 +139,6 @@ export default function AuthStack() {
             },
           }}
         />
-        {/* <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{
-            headerStyle: {
-              backgroundColor: "#56D8E5",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
