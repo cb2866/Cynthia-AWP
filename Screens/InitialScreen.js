@@ -9,7 +9,6 @@ import {
   Platform,
   TouchableOpacity,
 } from "react-native";
-// import { NavigationContainer } from "@react-navigation/native";
 
 function InitialScreen({ navigation }) {
   return (

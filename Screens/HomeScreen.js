@@ -12,7 +12,7 @@ import {
 import { useAuthentication } from "../utils/hooks/useAuthentication";
 
 function HomeScreen({ navigation }) {
-  const { user } = useAuthentication();
+  // const { user } = useAuthentication();
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -21,7 +21,9 @@ function HomeScreen({ navigation }) {
           url: "https://i.pinimg.com/originals/f2/32/84/f232848dd82aa1811a32ce487bced701.jpg",
         }}
       >
-        <Text style={styles.text}>Welcome {user?.email}!</Text>
+        <Text style={styles.text}>
+          Welcome, {firebase.auth().currentUser.email}!
+        </Text>
         <TouchableOpacity
           style={styles.flatButton}
           onPress={() => {

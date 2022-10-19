@@ -1,18 +1,14 @@
-// Import the functions you need from the SDKs you need
-
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import "firebase/compat/firestore";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import "firebase/auth";
 import Constants from "expo-constants";
-import firebase from "@react-native-firebase/app";
-import "@react-native-firebase/auth";
-import "@react-native-firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: Constants.manifest?.extra?.firebaseApiKey,
   authDomain: Constants.manifest?.extra?.firebaseAuthDomain,
@@ -23,8 +19,30 @@ const firebaseConfig = {
   measurementId: Constants.manifest?.extra?.firebaseMeasurementId,
 };
 const app = initializeApp(firebaseConfig);
-// Initialize Firebase
+const auth = getAuth();
 
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
+export const handleSignUp = async (email, password) => {
+  await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential.currentUser);
+      const user = userCredential.currentUser;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const handleSignIn = async (email, password) => {
+  await signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log(userCredential.currentUser);
+      const user = userCredential.user;
+    })
+    .catch((error) => {
+      console.error(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
+
 export default app;
