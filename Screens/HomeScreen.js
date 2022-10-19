@@ -1,16 +1,24 @@
 import React from "react";
 import {
-  Button,
   ImageBackground,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
+  VirtualizedList,
 } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
+import { useFonts } from "expo-font";
 
 function HomeScreen({ navigation }) {
   const auth = getAuth();
+  const [loaded] = useFonts({
+    Pecita: require("../assets/fonts/Pecita.otf"),
+    JosefinSans: require("../assets/fonts/JosefinSans-Regular.ttf"),
+  });
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -20,83 +28,90 @@ function HomeScreen({ navigation }) {
           url: "https://i.pinimg.com/originals/f2/32/84/f232848dd82aa1811a32ce487bced701.jpg",
         }}
       >
-        <Text style={styles.text}>Crack On!</Text>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("LogIn");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("Season 2");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 4</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 5</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 6</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 7</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatButton}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Season 8</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.flatRedButton}
-          onPress={() =>
-            signOut(auth)
-              .then(() => {
-                navigation.navigate("Sign Out");
-              })
-              .catch((error) => {})
-          }
-        >
-          <Text style={styles.signOutButton}>Sign Out</Text>
-        </TouchableOpacity>
+        <View style={styles.signContainer}>
+          <Text style={styles.text}>Welcome to Love Island!</Text>
+        </View>
+
+        <View style={styles.innerContainer}>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("LogIn");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("Season 2");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 3</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 4</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 5</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 6</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 7</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.flatButton}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Season 8</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.signContainer}>
+          <TouchableOpacity
+            style={styles.flatRedButton}
+            onPress={() =>
+              signOut(auth)
+                .then(() => {
+                  navigation.navigate("Sign Out");
+                })
+                .catch((error) => {})
+            }
+          >
+            <Text style={styles.signOutButton}>Sign Out</Text>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -107,25 +122,35 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flex: 1,
   },
+  innerContainer: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+  },
+  signContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+  },
   flatButton: {
-    marginTop: 20,
+    marginTop: 15,
     width: 100,
     height: 50,
     justifyContent: "center",
+    fontFamily: "JosefinSans",
     alignItems: "center",
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 10,
     backgroundColor: "#ff36a0",
   },
   flatRedButton: {
     marginTop: 20,
-    width: 100,
-    height: 50,
+    width: 350,
+    height: 40,
     justifyContent: "center",
     alignItems: "center",
+    fontFamily: "JosefinSans",
     padding: 10,
-    borderRadius: 20,
-    backgroundColor: "#c40610",
+    borderRadius: 10,
+    backgroundColor: "yellow",
   },
   image: {
     flex: 1,
@@ -139,20 +164,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#56d8e5",
   },
   text: {
-    color: "white",
-    fontSize: 30,
-    lineHeight: 40,
+    color: "yellow",
+    fontSize: 60,
+    lineHeight: 60,
+    fontFamily: "Pecita",
     fontWeight: "bold",
+    textAlign: "center",
   },
   buttonText: {
     fontSize: 15,
     fontWeight: "bold",
     color: "white",
+    fontFamily: "JosefinSans",
   },
   signOutButton: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "white",
+    color: "black",
+    fontFamily: "JosefinSans",
   },
   thumbnail: {
     width: 300,

@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Platform,
-} from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { Button } from "@rneui/base";
-import Icon from "react-native-ionicons";
-
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { handleSignIn } from "../config/firebase";
+import { useFonts } from "expo-font";
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisibility] = React.useState({ name: "eye-off" });
-
+  const [loaded] = useFonts({
+    Pecita: require("../assets/fonts/Pecita.otf"),
+  });
+  if (!loaded) {
+    return null;
+  }
   const ToggleVisibilty = () => {
     if (visible.name === "eye") {
       setVisibility({ name: "eye-off" });
@@ -56,7 +54,11 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View
+        style={{
+          paddingHorizontal: 10,
+        }}
+      >
         <Text style={styles.formLabel}>Welcome back, bombshell!</Text>
       </View>
       <View>
@@ -81,7 +83,7 @@ const SignIn = ({ navigation }) => {
             keyboardType="default"
             autoCorrect={false}
           />
-          <Icon
+          <Ionicons
             name={visible.name}
             size={24}
             color="#ff36A0"
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff36a0",
     opacity: 0.5,
     alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 40,
     height: 50,
   },
   passwordContainer: {
@@ -137,9 +139,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#56d8e5",
   },
   formLabel: {
-    fontSize: 25,
-    color: "#fff",
+    fontSize: 50,
+    color: "#fcfb3a",
     fontWeight: "bold",
+    fontFamily: "Pecita",
+    textAlign: "center",
   },
   inputStyle: {
     marginTop: 20,
@@ -154,10 +158,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     color: "#fff",
     fontSize: 20,
+    fontFamily: "JosefinSans",
   },
   text: {
     color: "#fff",
     fontSize: 20,
+    fontFamily: "JosefinSans",
+    fontWeight: "bold",
   },
 });
 
