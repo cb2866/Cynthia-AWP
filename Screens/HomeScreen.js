@@ -92,7 +92,7 @@ function HomeScreen({ navigation }) {
           <TouchableOpacity
             style={styles.flatButton}
             onPress={() => {
-              navigation.navigate("SignUp");
+              navigation.navigate("Season 8");
             }}
           >
             <Text style={styles.buttonText}>Season 8</Text>
