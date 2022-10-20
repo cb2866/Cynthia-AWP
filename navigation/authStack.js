@@ -19,6 +19,7 @@ import SignIn from "../Screens/SignIn";
 import HomeScreen from "../Screens/HomeScreen";
 // import SignOut from "../Screens/SignOut";
 import S2 from "../Screens/S2";
+import OliviaScreen from "../Screens/OliviaScreen";
 const Stack = createNativeStackNavigator();
 
 export default function AuthStack() {
@@ -99,6 +100,20 @@ export default function AuthStack() {
         <Stack.Screen
           name="SignIn"
           component={SignIn}
+          options={{
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: "#56D8E5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="OliviaScrene"
+          component={OliviaScreen}
           options={{
             headerShown: false,
             headerStyle: {

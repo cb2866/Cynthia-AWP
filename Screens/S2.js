@@ -14,6 +14,8 @@ import { Button, Icon } from "@rneui/base";
 import Carousel from "react-native-snap-carousel";
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarouselCardItem";
 import data from "../data";
+import videos from "../videos";
+import CarouselVideoItem from "./CarouselVideoItem";
 
 <Button
   buttonStyle={{
@@ -33,6 +35,10 @@ import data from "../data";
 
 function S2({ navigation }) {
   const isCarousel = React.useRef(null);
+  const TEXT_LENGTH = 40;
+  const TEXT_HEIGHT = 14;
+  const OFFSET = TEXT_LENGTH / 2 - TEXT_HEIGHT / 2;
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -64,20 +70,60 @@ function S2({ navigation }) {
         </View>
         <View style={styles.signContainer}>
           <Text style={styles.text}>Season 2!</Text>
-          {/* <Text style={styles.text2}>Meet the Cast</Text> */}
         </View>
-        <Carousel
-          layout="stack"
-          layoutCardOffset={9}
-          ref={isCarousel}
-          data={data}
-          renderItem={CarouselCardItem}
-          sliderWidth={SLIDER_WIDTH}
-          itemWidth={ITEM_WIDTH}
-          inactiveSlideShift={0}
-          useScrollView={true}
-        />
-        <Text style={styles.text2}>Discussion Board</Text>
+        <View>
+          <View style={styles.sidewaysContainer}>
+            <Text style={styles.text2}>Cast</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "column",
+              left: 20,
+              bottom: 70,
+            }}
+          >
+            <Carousel
+              layout="stack"
+              ref={isCarousel}
+              data={data}
+              renderItem={CarouselCardItem}
+              sliderWidth={SLIDER_WIDTH}
+              itemWidth={ITEM_WIDTH}
+              inactiveSlideShift={0}
+              useScrollView={true}
+            />
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "column",
+            alignItems: "flex-start",
+            position: "relative",
+            top: 130,
+            left: -20,
+          }}
+        >
+          <Text style={styles.text2}>Clips</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "column",
+            left: 20,
+            bottom: 20,
+          }}
+        >
+          <Carousel
+            layout="stack"
+            ref={isCarousel}
+            data={videos}
+            renderItem={CarouselVideoItem}
+            sliderWidth={SLIDER_WIDTH}
+            itemWidth={ITEM_WIDTH}
+            inactiveSlideShift={0}
+            useScrollView={true}
+          />
+        </View>
       </ImageBackground>
     </View>
   );
@@ -92,6 +138,13 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     flexDirection: "column",
     alignItems: "center",
+  },
+  sidewaysContainer: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    position: "relative",
+    top: 70,
+    left: -20,
   },
   roundButton2: {
     marginTop: 20,
@@ -113,15 +166,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   text2: {
-    color: "#ff36a0",
-    fontSize: 30,
-    lineHeight: 30,
-    padding: 10,
+    color: "#ff36A0",
+    fontSize: 60,
+    lineHeight: 80,
     fontWeight: "bold",
-    textAlign: "center",
-    alignItems: "center",
     fontFamily: "JosefinSans",
-    textDecorationLine: true,
+    transform: [{ rotate: "270deg" }],
   },
   image: {
     flex: 1,

@@ -1,35 +1,26 @@
 import React from "react";
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  Image,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Dimensions, StyleSheet, Image, Text } from "react-native";
+import Carousel from "react-native-snap-carousel";
+import { YoutubePlayer } from "reactjs-media";
+import videos from "../videos";
 
 export const SLIDER_WIDTH = Dimensions.get("window").width + 80;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
-
-function CarouselCardItem({ item, index }) {
-  // const navigation = useNavigation();
+export default function CarouselVideoItem({ item, index }) {
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 2 },
+    { width: 1200, itemsToShow: 3 },
+  ];
 
   return (
     <View style={styles.container} key={index}>
-      <TouchableOpacity
-        onPress={() => {
-          // navigate("OliviaScreen");
-        }}
-      >
-        <Image source={{ uri: item.imgUrl }} style={styles.image} />
-      </TouchableOpacity>
-      <Text style={styles.header}>{item.title}</Text>
+      <Image source={{ uri: item.videoUrl }} style={styles.image} />
       <Text style={styles.body}>{item.body}</Text>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
@@ -58,5 +49,3 @@ const styles = StyleSheet.create({
     fontFamily: "JosefinSans",
   },
 });
-
-export default CarouselCardItem;

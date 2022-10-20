@@ -30,6 +30,8 @@
     "ionicons": "^6.0.3",
     "native-base": "^3.4.18",
     "react": "^18.0.0",
+    "react-dom": "^18.2.0",
+    "react-elastic-carousel": "^0.11.5",
     "react-native": "0.69.6",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-ionicons": "^4.6.5",
@@ -39,7 +41,8 @@
     "react-native-snap-carousel": "^4.0.0-beta.6",
     "react-native-svg": "12.3.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-navigation-drawer": "^2.7.2"
+    "react-navigation-drawer": "^2.7.2",
+    "reactjs-media": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
