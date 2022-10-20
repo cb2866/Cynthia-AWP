@@ -9,33 +9,46 @@ import {
   Platform,
   TouchableOpacity,
 } from "react-native";
+import { useFonts } from "expo-font";
 
 function InitialScreen({ navigation }) {
+  const [loaded] = useFonts({
+    Pecita: require("../assets/fonts/Pecita.otf"),
+    JosefinSans: require("../assets/fonts/JosefinSans-Regular.ttf"),
+  });
+  if (!loaded) {
+    return null;
+  }
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.text}>Welcome to the Love Island Fan Community</Text> */}
       <ImageBackground
         style={styles.image}
         source={{
           url: "https://stylecaster.com/wp-content/uploads/2021/08/Love-Island-UK-2.png?w=445",
         }}
       >
-        <TouchableOpacity
-          style={styles.roundButton2}
-          onPress={() => {
-            navigation.navigate("SignIn");
-          }}
-        >
-          <Text style={styles.buttonText}>Sign In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.roundButton2}
-          onPress={() => {
-            navigation.navigate("SignUp");
-          }}
-        >
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
+        <View style={styles.signContainer}>
+          <Text style={styles.text}>Welcome to Love Island!</Text>
+        </View>
+
+        <View style={{ justifyContent: "flex-end" }}>
+          <TouchableOpacity
+            style={styles.roundButton2}
+            onPress={() => {
+              navigation.navigate("SignIn");
+            }}
+          >
+            <Text style={styles.buttonText}>Sign In</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.roundButton2}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -58,22 +71,26 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     opacity: 0.5,
     padding: 15,
-    flexDirection: "row",
   },
+
   text: {
-    color: "white",
-    fontSize: 30,
-    lineHeight: 40,
+    color: "yellow",
+    fontSize: 60,
+    lineHeight: 60,
+    fontFamily: "Pecita",
     fontWeight: "bold",
-    textAlignmentVertical: "bottom",
+    textAlign: "center",
+    alignItems: "center",
+    padding: 10,
   },
   buttonText: {
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
+    fontFamily: "JosefinSans",
   },
 });
 

@@ -77,9 +77,7 @@ const SignUp = ({ navigation }) => {
           paddingHorizontal: 10,
         }}
       >
-        <Text style={styles.formLabel}>
-          Ready to enter the Love Island Villa?
-        </Text>
+        <Text style={styles.formLabel}>Ready to enter the Villa?</Text>
       </View>
       <View>
         <TextInput
