@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-function SignOut({ navigation }) {
+function OliviaScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.image}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignOut;
+export default OliviaScreen;

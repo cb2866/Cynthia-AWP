@@ -17,7 +17,7 @@ import DiscussionBoard from "../Screens/DiscussionBoard";
 import SignUp from "../Screens/SignUp";
 import SignIn from "../Screens/SignIn";
 import HomeScreen from "../Screens/HomeScreen";
-import SignOut from "../Screens/SignOut";
+// import SignOut from "../Screens/SignOut";
 import S2 from "../Screens/S2";
 const Stack = createNativeStackNavigator();
 
@@ -26,9 +26,10 @@ export default function AuthStack() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Welcome!"
+          name="InitialScreen"
           component={InitialScreen}
           options={{
+            headerShown: false,
             headerStyle: {
               backgroundColor: "#56D8E5",
             },
@@ -38,23 +39,12 @@ export default function AuthStack() {
             },
           }}
         />
-        <Stack.Screen
-          name="Sign Out"
-          component={SignOut}
-          options={{
-            headerStyle: {
-              backgroundColor: "#56D8E5",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
+
         <Stack.Screen
           name="Season 2"
           component={S2}
           options={{
+            headerShown: false,
             headerStyle: {
               backgroundColor: "#56D8E5",
             },
@@ -68,6 +58,7 @@ export default function AuthStack() {
           name="Home"
           component={HomeScreen}
           options={{
+            headerShown: false,
             headerStyle: {
               backgroundColor: "#56D8E5",
             },
@@ -95,6 +86,7 @@ export default function AuthStack() {
           name="SignUp"
           component={SignUp}
           options={{
+            headerShown: false,
             headerStyle: {
               backgroundColor: "#56D8E5",
             },
@@ -108,6 +100,7 @@ export default function AuthStack() {
           name="SignIn"
           component={SignIn}
           options={{
+            headerShown: false,
             headerStyle: {
               backgroundColor: "#56D8E5",
             },

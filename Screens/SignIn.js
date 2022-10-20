@@ -54,11 +54,27 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          paddingHorizontal: 10,
-        }}
-      >
+      <View style={{ alignItems: "flex-start", paddingTop: 20 }}>
+        <Button
+          containerStyle={{
+            width: 100,
+            marginHorizontal: -200,
+            marginVertical: 0,
+          }}
+          buttonStyle={{ backgroundColor: "white" }}
+          title="Back"
+          type="solid"
+          titleStyle={{
+            fontFamily: "JosefinSans",
+            color: "#FF36A0",
+            fontWeight: "bold",
+          }}
+          onPress={() => {
+            navigation.navigate("InitialScreen");
+          }}
+        ></Button>
+      </View>
+      <View style={styles.signContainer}>
         <Text style={styles.formLabel}>Welcome back, bombshell!</Text>
       </View>
       <View>
@@ -152,6 +168,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 50,
     backgroundColor: "#DCDCDC",
+  },
+  signContainer: {
+    paddingTop: 40,
+    flexDirection: "column",
+    alignItems: "center",
+    paddingHorizontal: 10,
   },
   formText: {
     alignItems: "center",

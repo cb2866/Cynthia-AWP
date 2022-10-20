@@ -104,7 +104,7 @@ function HomeScreen({ navigation }) {
             onPress={() =>
               signOut(auth)
                 .then(() => {
-                  navigation.navigate("Sign Out");
+                  navigation.navigate("InitialScreen");
                 })
                 .catch((error) => {})
             }
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   signContainer: {
+    paddingTop: 40,
     flexDirection: "column",
     alignItems: "center",
   },
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     fontFamily: "JosefinSans",
     alignItems: "center",
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: "#ff36a0",
   },
   flatRedButton: {
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     fontFamily: "JosefinSans",
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: "yellow",
   },
   image: {
@@ -179,8 +180,8 @@ const styles = StyleSheet.create({
   },
   signOutButton: {
     fontSize: 15,
-    fontWeight: "bold",
-    color: "black",
+    fontWeight: "300",
+    color: "#ff36a0",
     fontFamily: "JosefinSans",
   },
   thumbnail: {

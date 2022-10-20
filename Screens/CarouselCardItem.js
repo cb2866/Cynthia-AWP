@@ -1,18 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Image,
+} from "react-native";
+// import { useNavigation } from "@react-navigation/native";
 
 export const SLIDER_WIDTH = Dimensions.get("window").width + 80;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
 
-const CarouselCardItem = ({ item, index }) => {
+function CarouselCardItem({ item, index }, { navigation }) {
   return (
     <View style={styles.container} key={index}>
+      {/* <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("OliviaScreen");
+        }}
+      > */}
       <Image source={{ uri: item.imgUrl }} style={styles.image} />
       <Text style={styles.header}>{item.title}</Text>
       <Text style={styles.body}>{item.body}</Text>
+      {/* </TouchableOpacity> */}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

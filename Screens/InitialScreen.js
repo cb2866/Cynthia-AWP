@@ -31,7 +31,13 @@ function InitialScreen({ navigation }) {
           <Text style={styles.text}>Welcome to Love Island!</Text>
         </View>
 
-        <View style={{ justifyContent: "flex-end" }}>
+        <View
+          style={{
+            paddingBottom: 40,
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+          }}
+        >
           <TouchableOpacity
             style={styles.roundButton2}
             onPress={() => {
@@ -59,6 +65,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flex: 1,
   },
+  signContainer: {
+    paddingTop: 40,
+    flexDirection: "column",
+    alignItems: "center",
+  },
   roundButton2: {
     marginTop: 20,
     width: 100,
@@ -66,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 5,
     backgroundColor: "#56D8E5",
   },
   image: {

@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 // import TextBox from "react-native-password-eye";
-import { StyleSheet, TextInput, Text, View } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { Button } from "@rneui/base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { handleSignUp } from "../config/firebase";
@@ -72,11 +78,27 @@ const SignUp = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          paddingHorizontal: 10,
-        }}
-      >
+      <View style={{ alignItems: "flex-start", paddingTop: 20 }}>
+        <Button
+          containerStyle={{
+            width: 100,
+            marginHorizontal: -200,
+            marginVertical: 0,
+          }}
+          buttonStyle={{ backgroundColor: "white" }}
+          title="Back"
+          type="solid"
+          titleStyle={{
+            fontFamily: "JosefinSans",
+            color: "#FF36A0",
+            fontWeight: "bold",
+          }}
+          onPress={() => {
+            navigation.navigate("InitialScreen");
+          }}
+        ></Button>
+      </View>
+      <View style={styles.signContainer}>
         <Text style={styles.formLabel}>Ready to enter the Villa?</Text>
       </View>
       <View>
@@ -129,6 +151,12 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     height: 50,
     flexDirection: "column",
+  },
+  signContainer: {
+    paddingTop: 40,
+    flexDirection: "column",
+    alignItems: "center",
+    paddingHorizontal: 10,
   },
   formLabel: {
     fontSize: 50,
