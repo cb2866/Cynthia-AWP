@@ -28,7 +28,7 @@ function InitialScreen({ navigation }) {
         }}
       >
         <View style={styles.signContainer}>
-          <Text style={styles.text}>Welcome to Love Island!</Text>
+          <Text style={styles.text}>It's early days...</Text>
         </View>
 
         <View
